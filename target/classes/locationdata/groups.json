@@ -1,0 +1,306 @@
+{
+    "Lost Woods Hideout": {
+        "Lost Woods Hideout Drop" : {
+            "type":"drop",
+            "direction":null
+        },
+        "Lost Woods Hideout Stump" : {
+            "type":"cave",
+            "direction":null
+        }
+    },
+    "Lumberjack Cave": {
+        "Lumberjack Tree Cave": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Lumberjack Tree Tree": {
+            "direction": null,
+            "type": "drop"
+        }
+    },
+    "Death Mountain Return Cave": {
+        "Death Mountain Return Cave (East)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Death Mountain Return Cave (West)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Old Man Cave": {
+        "Old Man Cave (East)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Old Man Cave (West)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Old Man House": {
+        "Old Man House (Bottom)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Old Man House (Top)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Spectacle Rock": {
+        "Spectacle Rock Cave": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Spectacle Rock Cave (Bottom)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Spectacle Rock Cave Peak": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Paradox Cave": {
+        "Paradox Cave (Bottom)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Paradox Cave (Middle)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Paradox Cave (Top)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Fairy Ascension Cave": {
+        "Fairy Ascension Cave (Bottom)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Fairy Ascension Cave (Top)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Spiral Cave": {
+        "Spiral Cave": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Spiral Cave (Bottom)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "North Fairy": {
+        "North Fairy Cave": {
+            "direction": null,
+            "type": "cave"
+        },
+        "North Fairy Cave Drop": {
+            "direction": null,
+            "type": "drop"
+        }
+    },
+    "Kakariko Well": {
+        "Kakariko Well Cave": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Kakariko Well Drop": {
+            "direction": null,
+            "type": "drop"
+        }
+    },
+    "Elder House": {
+        "Elder House (East)": {
+            "direction": "E",
+            "type": "house"
+        },
+        "Elder House (West)": {
+            "direction": "West",
+            "type": "house"
+        }
+    },
+    "Tavern House": {
+        "Tavern (Front)": {
+            "direction": null,
+            "type": "house"
+        },
+        "Tavern North": {
+            "direction": null,
+            "type": "back house"
+        }
+    },
+    "Bat Cave": {
+        "Bat Cave Cave": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Bat Cave Drop": {
+            "direction": null,
+            "type": "drop"
+        }
+    },
+    "Hyrule Castle Secret": {
+        "Hyrule Castle Secret Entrance Drop": {
+            "direction": null,
+            "type": "drop"
+        },
+        "Hyrule Castle Secret Entrance Stairs": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Two Brothers": {
+        "Two Brothers House (East)": {
+            "direction": "E",
+            "type": "house"
+        },
+        "Two Brothers House (West)": {
+            "direction": "W",
+            "type": "house"
+        }
+    },
+    "Bumper Cave": {
+        "Bumper Cave (Bottom)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Bumper Cave (Top)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Hookshot Cave": {
+        "Hookshot Cave": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Hookshot Cave Back Entrance": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Superbunny Cave": {
+        "Superbunny Cave (Bottom)": {
+            "direction": null,
+            "type": "cave"
+        },
+        "Superbunny Cave (Top)": {
+            "direction": null,
+            "type": "cave"
+        }
+    },
+    "Pyramid" : {
+        "Pyramid Entrance": {
+            "direction": null,
+            "type": "house"
+        },
+        "Pyramid Hole": {
+            "direction": null,
+            "type": "drop"
+        }
+    },
+    "Hyrule Castle": {
+        "Hyrule Castle Entrance (East)": {
+            "direction": "E",
+            "type": "dungeon"
+        },
+        "Hyrule Castle Entrance (South)": {
+            "direction": "S",
+            "type": "dungeon"
+        },
+        "Hyrule Castle Entrance (West)": {
+            "direction": "W",
+            "type": "dungeon"
+        },
+        "Agahnims Tower": {
+            "direction": "N",
+            "type": "dungeon"
+        }
+    },
+    "Sanctuary": {
+        "Sanctuary": {
+            "direction": null,
+            "type": "house"
+        },
+        "Sanctuary Grave": {
+            "direction": null,
+            "type": "drop"
+        }
+    },
+    "Desert Palace": {
+        "Desert Palace Entrance (East)": {
+            "direction": "E",
+            "type": "dungeon"
+        },
+        "Desert Palace Entrance (North)": {
+            "direction": "N",
+            "type": "dungeon"
+        },
+        "Desert Palace Entrance (South)": {
+            "direction": "S",
+            "type": "dungeon"
+        },
+        "Desert Palace Entrance (West)": {
+            "direction": "W",
+            "type": "dungeon"
+        }
+    },
+    "Skull Woods First Section": {
+        "Skull Woods First Section Door": {
+            "direction": null,
+            "type": "dungeon"
+        },
+        "Skull Woods First Section Hole (East)": {
+            "direction": "E",
+            "type": "drop dungeon"
+        },
+        "Skull Woods First Section Hole (North)": {
+            "direction": "N",
+            "type": "drop dungeon"
+        },
+        "Skull Woods First Section Hole (West)": {
+            "direction": "W",
+            "type": "drop dungeon"
+        }
+    },
+    "Skull Woods Second Section": {
+        "Skull Woods Second Section Door (East)": {
+            "direction": "E",
+            "type": "dungeon"
+        },
+        "Skull Woods Second Section Door (West)": {
+            "direction": "W",
+            "type": "dungeon"
+        },
+        "Skull Woods Second Section Hole": {
+            "direction": null,
+            "type": "drop dungeon"
+        }
+    },
+    "Turtle Rock": {
+        "Turtle Rock": {
+            "direction": "N",
+            "type": "dungeon"
+        },
+        "Turtle Rock Isolated Ledge Entrance": {
+            "direction": "S",
+            "type": "dungeon"
+        },
+        "Dark Death Mountain Ledge (East)": {
+            "direction": "E",
+            "type": "dungeon"
+        },
+        "Dark Death Mountain Ledge (West)": {
+            "direction": "W",
+            "type": "dungeon"
+        }
+    }
+}
