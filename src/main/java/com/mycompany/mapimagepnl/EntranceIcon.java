@@ -82,7 +82,7 @@ public class EntranceIcon extends JButton {
      * to another Entrance is attempted without the current {@code connection}
      * being open ({@code null}).
      *
-     * @see clearConnection
+     * @see #clearConnection()
      */
     public boolean setConnection(EntranceIcon other) {
         if (other == null) { return clearConnection(); }
@@ -351,9 +351,6 @@ public class EntranceIcon extends JButton {
     /** Name of grouping that the entrance icon belongs to */
     private String groupName;
 
-    /**
-     *
-     */
     private char groupDir;
 
     /** {@code EntranceIcon} that {@code this} entrance is connected to*/

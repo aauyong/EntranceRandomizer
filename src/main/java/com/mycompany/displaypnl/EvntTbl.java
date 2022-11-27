@@ -14,11 +14,30 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * A JTable for storing and displaying Events as String[].
+ * 
+ * The table displays each event as a row, with the timestamp of the event, 
+ * type of event, name of affected entrance, and name of affected exit. 
+ * Additionally, the final column is a delete button to remove a specific 
+ * events
+ * 
+ * Events are stored in a stack-like manner: Most recent events are stored
+ * at the top of the table, whereas the oldest events are at the bottom.
+ * 
+ * Access is limited, most interfacing is done through the {@code DisplayPnl}.
+ * 
+ * Supports deleting and getting specific rows by index.
+ * 
+ * Utilizes a custom table model and custom cell editors and renderers to 
+ * build the table buttons. 
+ * @author aauyong
+ */
 public class EvntTbl extends JTable {
-    private List<String[]> events;
     public EvntTbl() {
         this.model = new EvntTblModel();
-        events = new ArrayList<>();
+        this.events = new ArrayList<>();
 
         setModel(model);
         getColumn("Delete").setCellRenderer(new ButtonRenderer());
@@ -34,23 +53,49 @@ public class EvntTbl extends JTable {
         getColumnModel().getColumn(4).setPreferredWidth(50);
     }
 
-
-    public void addEvent(String evnt, String entr, String ext) {
+    /**
+     * Adds an Event to the table.
+     * 
+     * An event is described as four Strings; A timestamp, an Event Type, 
+     * the entrance name, and the exit name.
+     * 
+     * The timestamp is calculated and truncated down to seconds. All of these 
+     * elements then intstantiate a string array that is inserted into the table at
+     * index 0.
+     * @param evntType
+     * @param entrName
+     * @param extName
+     */
+    public void addEvent(String evntType, String entrName, String extName) {
         LocalTime time = LocalTime.now();
         time = time.truncatedTo(java.time.temporal.ChronoUnit.SECONDS);
-        String[] s = {time.toString(), evnt, entr, ext};
+        String[] s = {time.toString(), evntType, entrName, extName};
         this.model.insertRow(0, s);
         events.add(0, s);
     }
 
-    public void deleteEvent(int row) {
+    /**
+     * Delete event at a specific row
+     * @param row
+     */
+    protected void deleteEvent(int row) {
         model.removeRow(row);
     }
+
 
     protected List<String[]> getEvents() {
         return events;
     }
 
+    /**
+     * Custom Table Model encapsulated in the {@code EvntTbl}.
+     * 
+     * Creates a five column table; Timestamp, Event, Entrance, Exit, and Delete.
+     * 
+     * Only allows the 5th column to be edited, the delete button.
+     * 
+     * @author aauyong
+     */
     private class EvntTblModel extends javax.swing.table.DefaultTableModel {
         public EvntTblModel() {
             super(
@@ -70,6 +115,11 @@ public class EvntTbl extends JTable {
         }
     }
 
+    /**
+     * Custom JButton that is rendered as a table cell
+     * 
+     * 
+     */
     private class ButtonRenderer extends JButton implements TableCellRenderer {
 
         public ButtonRenderer() {
@@ -93,6 +143,11 @@ public class EvntTbl extends JTable {
         }
     }
 
+    /**
+     * Custom DefaultCellEditor with a JButton
+     * 
+     * Deletes rows of the table when the button is pressed
+     */
     private class ButtonEditor extends DefaultCellEditor {
         protected JButton button;
         private int currentRow;
@@ -118,4 +173,6 @@ public class EvntTbl extends JTable {
     }
 
     private EvntTblModel model;
+
+    private List<String[]> events;
 }

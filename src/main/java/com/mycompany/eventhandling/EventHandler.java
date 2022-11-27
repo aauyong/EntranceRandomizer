@@ -16,6 +16,11 @@ import java.util.Stack;
  * panel. Any actions such as deletions or undo's that occur in the Display
  * panel are passed into the event handler, which will update the corresponding
  * EntranceIcons in the Map Tracker.
+ * 
+ * //TODO Maybe main event storage should be a stack? That way this is stored
+ * in the exact same way as the EventTbl
+ * 
+ * // TODO better, maybe store items in a map, keyed by EntranceEvent or String[]
  * @author aauyong
  */
 public class EventHandler {

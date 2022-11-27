@@ -12,6 +12,9 @@ import javax.swing.event.TableModelListener;
 import com.mycompany.displaypnl.DisplayPnl;
 import com.mycompany.eventhandling.EventHandler;
 
+
+// TODO Maybe move the action/listeners into the EventHandler
+
 /**
  *
  * @author blarg
@@ -72,7 +75,7 @@ public class EntranceWindow extends javax.swing.JFrame {
             public void tableChanged(TableModelEvent tblEvt) {
                 if (tblEvt.getType() == TableModelEvent.DELETE) {
                     var r = tblEvt.getFirstRow();
-                    evntHndlr.removeEvent(dispPnl.getAlteredRowNum(r));
+                    evntHndlr.removeEvent(dispPnl.getRow(r));
                 }
             }
         });

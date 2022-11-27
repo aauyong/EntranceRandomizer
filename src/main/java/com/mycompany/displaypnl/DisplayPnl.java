@@ -4,42 +4,82 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+/**
+ * A JPanel for displayign various tracker information.
+ * 
+ * Contains a {@code EvntTbl} that tracks all the events that occur in the 
+ * map tracker, such as connections and deletions. 
+ * 
+ * It also contains buttons and drop downs for turning on or off various settings,
+ * such as hiding useless markers and the type of grouping such as Simple or 
+ * Restricted.
+ * @author aauyong
+ */
 public class DisplayPnl extends JPanel {
+    /**
+     * Constructor
+     * 
+     * Initializes components and the layout
+     */
     public DisplayPnl() {
         super();
         initComponents();
         initLayout();
     }
 
-    public void addEvent(String evnt, String entr, String ext) {
-        evntLog.addEvent(evnt, entr, ext);
+    /**
+     * Calls the {@code EvntTbl}'s {@code addEvent} with the parameters
+     * @param evntType Type of event to add
+     * @param entr Name of entrance 
+     * @param ext Name of exit
+     */
+    public void addEvent(String evntType, String entr, String ext) {
+        evntLogTbl.addEvent(evntType, entr, ext);
     }
 
+    /**
+     * @return {@code evntLog}'s table model
+     */
     public javax.swing.table.TableModel getTblModel() {
-        return this.evntLog.getModel();
+        return this.evntLogTbl.getModel();
     }
 
+    /**
+     * Call {@code evntLog}'s {@code getEvents}
+     * @return List of String[] containing the events
+     * 
+     * @see com.mycompany.displaypnl.EvntTbl
+     */
     public List<String[]> getEvents() {
-        return evntLog.getEvents();
+        return evntLogTbl.getEvents();
     }
 
-    public int getAlteredRowNum(int row) {
-        return evntLog.getModel().getRowCount() - row;
+    /**
+     * Retreives the row indicated by {@code rowIdx}
+     * 
+     * {@code EventTbl} stores items from recent to latest, therefore index 0
+     * refers to the newest item. So this is used to access items
+     * @param rowIdx
+     * @return
+     */
+    public int getRow(int rowIdx) {
+        return evntLogTbl.getModel().getRowCount() - rowIdx;
     }
 
+    /** Accesser to the {@code this.toggleUseless} button*/
     public javax.swing.JToggleButton getUselessButton() {
         return this.toggleUseless;
     }
 
     private final void initComponents() {
-        this.evntLog = new EvntTbl();
+        this.evntLogTbl = new EvntTbl();
 
         this.evntScrll = new javax.swing.JScrollPane();
         this.evntScrll.setHorizontalScrollBarPolicy(
             javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER
         );
 
-        this.evntScrll.setViewportView(evntLog);
+        this.evntScrll.setViewportView(evntLogTbl);
         this.evntScrll.setPreferredSize( new java.awt.Dimension(550,200));
 
         this.toggleUseless = new javax.swing.JToggleButton();
@@ -61,7 +101,7 @@ public class DisplayPnl extends JPanel {
     }
 
     // private JTextArea evntLog;
-    private EvntTbl evntLog;
+    private EvntTbl evntLogTbl;
     private javax.swing.JScrollPane evntScrll;
 
     /** A toggle for hiding useless events */
