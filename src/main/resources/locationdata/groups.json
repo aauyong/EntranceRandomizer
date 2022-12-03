@@ -123,18 +123,8 @@
             "type": "house"
         },
         "Elder House (West)": {
-            "direction": "West",
+            "direction": "W",
             "type": "house"
-        }
-    },
-    "Tavern House": {
-        "Tavern (Front)": {
-            "direction": null,
-            "type": "house"
-        },
-        "Tavern North": {
-            "direction": null,
-            "type": "back house"
         }
     },
     "Bat Cave": {

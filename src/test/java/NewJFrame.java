@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import com.mycompany.displaypnl.*;
+import com.mycompany.entrancerando.NewJPanel;
 
 /**
  *
@@ -16,9 +16,6 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
-        dp.addEvent("Hello", "world", "My ass");
-        dp.addEvent("This Is", "The", "End");
-        dp.addEvent("I Am", "Sickened", "But Curious");
     }
 
     /**
@@ -29,13 +26,10 @@ public class NewJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        dp = new DisplayPnl();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        setLayout(new java.awt.BorderLayout());
-        add(dp);
-        add(new javax.swing.JToggleButton());
+        this.dp = new NewJPanel();
+        add(this.dp);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -76,6 +70,6 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private DisplayPnl dp;
+    private NewJPanel dp;
     // End of variables declaration//GEN-END:variables
 }

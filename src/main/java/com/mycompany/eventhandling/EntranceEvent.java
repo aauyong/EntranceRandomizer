@@ -1,6 +1,6 @@
 package com.mycompany.eventhandling;
 
-import com.mycompany.mapimagepnl.EntranceIcon;
+import com.mycompany.entrances.EntranceIcon;
 
 /**
  * An abstract representation of an Event involving {@code EntranceIcon}s
@@ -42,6 +42,7 @@ public class EntranceEvent {
     /*===========================================================================
     Public Methods
     ===========================================================================*/
+    // TODO documentation
     public String[] asArray() {
         return new String[]{
             this.eventType,
@@ -50,26 +51,32 @@ public class EntranceEvent {
         };
     }
 
+    // TODO documentation
     public void setEventType(String t) {
         this.eventType = t;
     }
 
+    // TODO documentation
     public String getEventType() {
         return this.eventType;
     }
 
+    // TODO documentation
     public void setPlaceA(EntranceIcon a) {
         this.entrA = a;
     }
 
+    // TODO documentation
     public EntranceIcon getPlaceA() {
         return this.entrA;
     }
 
+    // TODO documentation
     public void setPlaceB(EntranceIcon b) {
         this.entrB = b;
     }
 
+    // TODO documentation
     public EntranceIcon getPlaceB() {
         return this.entrB;
     }

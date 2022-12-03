@@ -4,19 +4,13 @@
  */
 package com.mycompany.entrancerando;
 
-import com.mycompany.mapimagepnl.MapTracker;
-
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-
 import com.mycompany.displaypnl.DisplayPnl;
 import com.mycompany.eventhandling.EventHandler;
-
-
-// TODO Maybe move the action/listeners into the EventHandler
+import com.mycompany.maptracker.MapTracker;
+import com.mycompany.entrances.ConnectionHandler;
 
 /**
- *
+ * TODO repackage and structure to fit mroe in line with OOP
  * @author blarg
  */
 public class EntranceWindow extends javax.swing.JFrame {
@@ -38,11 +32,13 @@ public class EntranceWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        dispPnl = new DisplayPnl();
-        mapTrckr = new MapTracker();
-        evntHndlr = new EventHandler(dispPnl, mapTrckr);
+        this.dispPnl = new DisplayPnl();
+        this.mapTrckr = new MapTracker();
+        this.evntHndlr = new EventHandler(dispPnl, mapTrckr);
 
-        // /**
+        sttngsHndlr = SettingsHandler.createInstance(dispPnl, mapTrckr);
+        cnnctnHndlr = ConnectionHandler.createInstance();
+
         getContentPane().setLayout(new java.awt.GridBagLayout());
         getContentPane().add(dispPnl, new java.awt.GridBagConstraints() {{
             anchor = java.awt.GridBagConstraints.NORTH;
@@ -55,53 +51,17 @@ public class EntranceWindow extends javax.swing.JFrame {
             weighty = 1;
             weightx = 1;
         }});
-        //  */
 
         mapTrckr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 0)));
         dispPnl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
 
-        initDispPnlListeners();
         initMapPnlListeners();
-
 
         mapTrckr.setOtherMinSize(dispPnl.getPreferredSize());
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initDispPnlListeners() {
-        // Update the Event Handler whenever the Event Table is changed
-        dispPnl.getTblModel().addTableModelListener( new TableModelListener(){
-            @Override
-            public void tableChanged(TableModelEvent tblEvt) {
-                if (tblEvt.getType() == TableModelEvent.DELETE) {
-                    var r = tblEvt.getFirstRow();
-                    evntHndlr.removeEvent(dispPnl.getRow(r));
-                }
-            }
-        });
-        
-        dispPnl.getUselessButton().addActionListener(
-            new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    mapTrckr.isHidingUseless(
-                        dispPnl.getUselessButton().isSelected()
-                    );
-                }
-            }
-        );
-    }
-
     private void initMapPnlListeners() {
-        // Add mouse listener to each Entrance Icon
-        for (var e : mapTrckr.getEntrances().values()) {
-            e.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent mouseEvt) {
-                    evntHndlr.tryAddEvent(mapTrckr.entranceIconClicked(e, mouseEvt));
-                }
-            });
-        }
-
         // Add resizer listener for mapPnl to update
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -111,6 +71,8 @@ public class EntranceWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static SettingsHandler sttngsHndlr;
+    public static ConnectionHandler cnnctnHndlr;
     private DisplayPnl dispPnl;
     private MapTracker mapTrckr;
     private EventHandler evntHndlr;

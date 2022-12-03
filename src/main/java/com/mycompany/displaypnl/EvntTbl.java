@@ -17,21 +17,21 @@ import java.util.List;
 
 /**
  * A JTable for storing and displaying Events as String[].
- * 
- * The table displays each event as a row, with the timestamp of the event, 
- * type of event, name of affected entrance, and name of affected exit. 
- * Additionally, the final column is a delete button to remove a specific 
+ *
+ * The table displays each event as a row, with the timestamp of the event,
+ * type of event, name of affected entrance, and name of affected exit.
+ * Additionally, the final column is a delete button to remove a specific
  * events
- * 
+ *
  * Events are stored in a stack-like manner: Most recent events are stored
  * at the top of the table, whereas the oldest events are at the bottom.
- * 
+ *
  * Access is limited, most interfacing is done through the {@code DisplayPnl}.
- * 
+ *
  * Supports deleting and getting specific rows by index.
- * 
- * Utilizes a custom table model and custom cell editors and renderers to 
- * build the table buttons. 
+ *
+ * Utilizes a custom table model and custom cell editors and renderers to
+ * build the table buttons.
  * @author aauyong
  */
 public class EvntTbl extends JTable {
@@ -55,11 +55,11 @@ public class EvntTbl extends JTable {
 
     /**
      * Adds an Event to the table.
-     * 
-     * An event is described as four Strings; A timestamp, an Event Type, 
+     *
+     * An event is described as four Strings; A timestamp, an Event Type,
      * the entrance name, and the exit name.
-     * 
-     * The timestamp is calculated and truncated down to seconds. All of these 
+     *
+     * The timestamp is calculated and truncated down to seconds. All of these
      * elements then intstantiate a string array that is inserted into the table at
      * index 0.
      * @param evntType
@@ -89,11 +89,11 @@ public class EvntTbl extends JTable {
 
     /**
      * Custom Table Model encapsulated in the {@code EvntTbl}.
-     * 
+     *
      * Creates a five column table; Timestamp, Event, Entrance, Exit, and Delete.
-     * 
+     *
      * Only allows the 5th column to be edited, the delete button.
-     * 
+     *
      * @author aauyong
      */
     private class EvntTblModel extends javax.swing.table.DefaultTableModel {
@@ -117,8 +117,8 @@ public class EvntTbl extends JTable {
 
     /**
      * Custom JButton that is rendered as a table cell
-     * 
-     * 
+     *
+     *
      */
     private class ButtonRenderer extends JButton implements TableCellRenderer {
 
@@ -145,7 +145,7 @@ public class EvntTbl extends JTable {
 
     /**
      * Custom DefaultCellEditor with a JButton
-     * 
+     *
      * Deletes rows of the table when the button is pressed
      */
     private class ButtonEditor extends DefaultCellEditor {

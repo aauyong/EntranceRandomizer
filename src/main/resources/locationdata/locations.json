@@ -1029,7 +1029,7 @@
         "direction": null,
         "group": null,
         "id": null,
-        "type": "drop dungeon",
+        "type": "drop",
         "world": "dark",
         "x": 800,
         "y": 687
@@ -1038,7 +1038,7 @@
         "direction": null,
         "group": null,
         "id": null,
-        "type": "drop dungeon",
+        "type": "drop",
         "world": "dark",
         "x": 776,
         "y": 536
@@ -1047,7 +1047,7 @@
         "direction": null,
         "group": null,
         "id": null,
-        "type": "drop dungeon",
+        "type": "drop",
         "world": "dark",
         "x": 640,
         "y": 720
@@ -1074,7 +1074,7 @@
         "direction": null,
         "group": null,
         "id": null,
-        "type": "drop dungeon",
+        "type": "drop",
         "world": "dark",
         "x": 496,
         "y": 368
@@ -1186,15 +1186,6 @@
         "world": "light",
         "x": 657,
         "y": 2439
-    },
-    "Tavern North": {
-        "direction": null,
-        "group": null,
-        "id": 31,
-        "type": "back house",
-        "world": "light",
-        "x": 657,
-        "y": 2324
     },
     "Thieves Town": {
         "direction": null,

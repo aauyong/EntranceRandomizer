@@ -1,12 +1,13 @@
 package com.mycompany.Connections;
 
 import javax.swing.JComponent;
+
+import com.mycompany.entrances.EntranceIcon;
+
 import java.awt.geom.Line2D;
 import java.awt.Color;
 import java.awt.BasicStroke;
 import java.awt.Point;
-
-import com.mycompany.mapimagepnl.EntranceIcon;
 
 public class Connection extends JComponent {
     private Line2D line;
