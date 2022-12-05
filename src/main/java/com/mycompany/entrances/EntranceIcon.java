@@ -1,7 +1,6 @@
 package com.mycompany.entrances;
 
 import java.awt.Point;
-import java.util.HashMap;
 
 import javax.swing.JButton;
 
@@ -46,10 +45,12 @@ public class EntranceIcon extends JButton {
         this.entrPt.translate(-offset, -offset);
         this.setToolTipText("Unknown");
 
-        if (type.equals("cave") || type.equals("house"))
-            this.entrType = EntranceIcon.NORMAL;
-        else
-            this.entrType = type;
+        this.entrType = EntrType.getFrom(type);
+        
+        // if (type.equals("cave") || type.equals("house"))
+        //     this.entrType = EntranceIcon.NORMAL;
+        // else
+        //     this.entrType = type;
 
         this.entrShapeType = type;
         this.entrShape = null;
@@ -193,26 +194,32 @@ public class EntranceIcon extends JButton {
         return false;
     } // decState
 
+    /** Getter for the connecting {@code EntranceIcon} */
     public EntranceIcon getConnection() {
         return this.connection;
     }
 
+    /** Get {@code Point} this refers to */
     public Point getPt() {
         return this.entrPt;
     }
 
+    /** Get Name of this {@code EntranceIcon} */
     public String getEntrName() {
         return this.entrName;
     }
 
+    /** Get Generic Type of this {@code EntranceIcon} */
     public final String getEntrType() {
-        return this.entrType;
+        return this.entrType.asString();
     }
 
+    /** If {@code this} is in the {@code USELESS} State */
     public boolean isUseless() {
         return this.state == ConnectionState.USELESS;
     }
 
+    /** Set whether the icon should be visible if {@code USELESS} */
     public void setHidingVisibility(boolean b) {
         this.isVisibleWhenUseless = b;
         setVisible(checkIfVisible());
@@ -251,7 +258,13 @@ public class EntranceIcon extends JButton {
         return this.world;
     }
 
-    // TODO write doc
+    /**
+     * Override {@link #paintComponent(java.awt.Graphics)}
+     * 
+     * Sets the shape to be drawn and fills said shape with the chosen background 
+     * color. BG is selected based on the connection state and whether the 
+     * button model is armed
+     */
     @Override
     protected void paintComponent(java.awt.Graphics g) {
         java.awt.Graphics2D g2 = (java.awt.Graphics2D) g;
@@ -265,7 +278,12 @@ public class EntranceIcon extends JButton {
         g2.fill(this.entrShape);
     }
 
-    // TODO write doc
+    /**
+     * Override {@link #paintBorder(java.awt.Graphics)} <p>
+     * 
+     * Paints a 3pt black border around {@code this}'s shape as well as the clipping
+     * shape/size. 
+     */
     @Override
     protected void paintBorder(java.awt.Graphics g) {
         java.awt.Graphics2D g2  = (java.awt.Graphics2D) g;
@@ -278,7 +296,7 @@ public class EntranceIcon extends JButton {
     }
 
     /**
-     * Override
+     * Override {@link #getPreferredSize()} <p>
      *
      * Scales the dimensions of the button based on the parent {@code MapPnl}
      * window and the {@code DEFAULT_SIZE}. If the button size would be out of
@@ -297,19 +315,30 @@ public class EntranceIcon extends JButton {
         return new Dimension(w,w);
     }
 
-    // TODO write doc
+    /**
+     * Override {@link #contains(int, int)} <p>
+     * 
+     * Calls the super implementation of {@code entrShape}'s contains
+     */
     @Override
     public boolean contains(int x, int y) {
         return this.entrShape.contains(x, y);
     }
 
-    // TODO write doc
+    /** Get the {@code ConnectionState} of {@code this} */
     public ConnectionState getConnectionState() {
         return this.state;
     }
 
-    // TODO write doc
-    public void setConnectionState(ConnectionState s) {
+    /** Sets {@code this.state} to the {@code UNKNOWN} state*/
+    public boolean setToUnknown() {
+        if (this.state == ConnectionState.UNKNOWN )
+            return false;
+        this.state = ConnectionState.UNKNOWN;
+        return true;
+    }
+    
+    private void setConnectionState(ConnectionState s) {
         this.state = s;
         setVisible(checkIfVisible());
         repaint();
@@ -325,9 +354,14 @@ public class EntranceIcon extends JButton {
         return this.isVisibleWhenUseless || (this.state != ConnectionState.USELESS);
     }
 
-    // TODO write doc
+    /**
+     * Set the Shape and location of {@code this} based on the Entrane Type.<p>
+     * Draws a circle for {@code drop}'s, diamond for {@code cave}'s, a triangle
+     * for {@code dungeon}s, and a rectangle by default.
+     */
     private void setShape() {
         switch(this.entrShapeType) {
+            // TODO write case for dungeons, triangle
             case "drop" -> this.entrShape = new java.awt.geom.Ellipse2D.Double(
                     0, 0, getWidth(), getHeight()
                 );
@@ -358,10 +392,19 @@ public class EntranceIcon extends JButton {
     /** Minimum Dimension size of the button */
     public final static int MIN_SIZE = DEFAULT_SIZE/3;
 
+    /** Normal cateogrization to describe Type */
     protected final static String NORMAL = "normal";
+
+    /** Drop categorization to describe Type */
     protected final static String DROP = "drop";
+
+    /** Dungeon categorization to describe Type */
     protected final static String DUNGEON = "dungeon";
+
+    /** Constant Static int for Light World representation */
     protected final static int LIGHT = 1;
+
+    /** Constant Static int for Dark World representation */
     protected final static int DARK = 2;
 
     /** Current Connection State of the button */
@@ -373,7 +416,32 @@ public class EntranceIcon extends JButton {
      */
     private final Point entrPt;
 
-    private final String entrType;
+    /**  */
+    // private final String entrType;
+    private final EntrType entrType;
+
+    enum EntrType {
+        NORMAL  ("normal"),
+        DROP    ("drop"),
+        DUNGEON ("dungeon");
+        
+        private String category;
+        EntrType(String s) {
+            this.category = s;
+        }
+
+        public String asString() { return this.category; }
+
+        public static EntrType getFrom(String s) {
+            switch(s) {
+                case "normal":  return NORMAL;
+                case "cave":    return NORMAL;
+                case "drop":    return DROP;
+                case "dungeon": return DUNGEON;
+            }
+            return null;
+        }
+    };
 
     /** Shape of the Icon */
     private java.awt.Shape entrShape;

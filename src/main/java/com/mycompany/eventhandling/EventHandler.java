@@ -286,7 +286,7 @@ public class EventHandler {
         if (this.activeEntr == null) return;
 
         if (this.activeEntr.getConnectionState() == ConnectionState.PENDING) {
-            this.activeEntr.setConnectionState(ConnectionState.UNKNOWN);
+            this.activeEntr.setToUnknown();
         }
         this.activeEntr = null;
     }
